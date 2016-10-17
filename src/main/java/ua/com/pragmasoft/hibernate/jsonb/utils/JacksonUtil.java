@@ -6,10 +6,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JacksonUtil {
 
 	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
+	static {
+		OBJECT_MAPPER.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+	}
 
 	public static <T> T fromString(String string, Class<T> clazz) {
 		try {
