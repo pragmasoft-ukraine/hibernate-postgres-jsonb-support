@@ -14,7 +14,6 @@ In you `pom.xml`:
     </repository>
 </repositories>
 ```
-
 2. Add dependency:
 In you `pom.xml`:
 ```xml
@@ -24,7 +23,6 @@ In you `pom.xml`:
 	<version>1.0</version>
 </dependency>
 ```
-
 3. Declare custom types definitions:
 In `package-info.java` of your model's package:
 ```java
@@ -40,7 +38,6 @@ import org.hibernate.annotations.TypeDefs;
 import ua.com.pragmasoft.hibernate.jsonb.type.JsonBinaryType;
 import ua.com.pragmasoft.hibernate.jsonb.type.JsonStringType;
 ```
-
 4. Describe youe entity.
 In your entity class:
 ```java
@@ -53,4 +50,17 @@ or
 @org.hibernate.annotations.Type("jsonb")
 @javax.persistence.Column(name = "name", columnDefinition = "jsonb")
 private POJO name;
+```
+
+
+
+Testing.
+Make sure, that you have docker installed.
+1. Run PostgreSQL docker container:
+```bash
+docker run --name some-postgres -p 5432:5432  -d postgres:9.5
+```
+2. Run build.
+```bash
+ mvn clean package
 ```
